@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="반도체 장비·공정 엔지니어 지원을 위한 Jiwoo Shim의 포트폴리오" />
+  <meta name="theme-color" content="#071018" />
+  <title>Jiwoo Shim | Semiconductor Equipment & Process Engineer</title>
+
+  <style>
+    :root {
+      --bg: #071018;
+      --bg-soft: #0b1620;
+      --panel: rgba(15, 29, 40, 0.78);
+      --panel-strong: #10202d;
+      --line: rgba(157, 190, 207, 0.16);
+      --text: #eef6f8;
+      --muted: #9fb0ba;
+      --accent: #57d4c8;
+      --accent-2: #9ee7df;
+      --accent-soft: rgba(87, 212, 200, 0.11);
+      --warm: #d6b46b;
+      --shadow: 0 18px 50px rgba(0, 0, 0, 0.26);
+      --radius: 22px;
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 10%, rgba(87, 212, 200, 0.10), transparent 26%),
+        radial-gradient(circle at 90% 22%, rgba(89, 132, 199, 0.09), transparent 25%),
+        linear-gradient(180deg, #061018 0%, #08131c 52%, #071018 100%);
+      font-family: Inter, Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        "Noto Sans KR", Arial, sans-serif;
+      line-height: 1.65;
+      letter-spacing: -0.015em;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    ::selection { background: rgba(87, 212, 200, 0.30); color: white; }
+
+    .page-grid {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      opacity: 0.35;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: linear-gradient(to bottom, black, transparent 72%);
+    }
+
+    .shell {
+      width: min(calc(100% - 40px), var(--max));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: rgba(7, 16, 24, 0.74);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      min-height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-size: 14px;
+      font-weight: 750;
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+    }
+
+    .chipmark {
+      width: 28px;
+      height: 28px;
+      border: 1px solid rgba(87,212,200,.68);
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      box-shadow: inset 0 0 0 5px rgba(87,212,200,.05);
+    }
+    .chipmark::after {
+      content: "";
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 2px;
+      box-shadow: 0 0 18px rgba(87,212,200,.6);
+    }
+
+    .navlinks {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .navlinks a { transition: .2s ease; }
+    .navlinks a:hover { color: var(--text); }
+
+    .hero {
+      min-height: 720px;
+      display: grid;
+      align-items: center;
+      padding: 86px 0 72px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 54px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--accent-2);
+      background: var(--accent-soft);
+      border: 1px solid rgba(87,212,200,.24);
+      border-radius: 999px;
+      padding: 8px 13px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow .dot {
+      width: 7px; height: 7px; border-radius: 50%; background: var(--accent);
+      box-shadow: 0 0 12px rgba(87,212,200,.65);
+    }
+
+    h1 {
+      margin: 22px 0 20px;
+      font-size: clamp(44px, 6vw, 76px);
+      line-height: 1.04;
+      letter-spacing: -0.045em;
+    }
+
+    h1 .sub {
+      display: block;
+      margin-top: 13px;
+      font-size: .42em;
+      line-height: 1.25;
+      color: #c4d1d8;
+      letter-spacing: -0.025em;
+      font-weight: 630;
+    }
+
+    .hero-copy {
+      max-width: 670px;
+      margin: 0;
+      font-size: 18px;
+      color: #b8c7cf;
+    }
+    .hero-copy strong { color: var(--text); font-weight: 760; }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 18px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      font-size: 13px;
+      font-weight: 750;
+      transition: .22s ease;
+    }
+    .btn.primary {
+      background: var(--accent);
+      color: #05211f;
+      border-color: transparent;
+    }
+    .btn.primary:hover { transform: translateY(-2px); filter: brightness(1.04); }
+    .btn.ghost:hover { border-color: rgba(87,212,200,.4); color: var(--accent-2); }
+
+    .hero-panel {
+      position: relative;
+      padding: 25px;
+      background: linear-gradient(180deg, rgba(16,32,45,.90), rgba(10,24,34,.90));
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero-panel::before {
+      content:"";
+      position:absolute;
+      inset:-1px;
+      pointer-events:none;
+      background: linear-gradient(135deg, rgba(87,212,200,.22), transparent 30%);
+      mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      mask-composite: exclude;
+      padding:1px;
+      border-radius:28px;
+    }
+
+    .panel-kicker {
+      font-size: 11px;
+      color: var(--accent-2);
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .signal {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      align-items: end;
+      gap: 6px;
+      height: 80px;
+      margin-bottom: 23px;
+    }
+
+    .signal span {
+      display: block;
+      min-height: 8px;
+      border-radius: 5px 5px 2px 2px;
+      background: linear-gradient(180deg, var(--accent), rgba(87,212,200,.18));
+      opacity: .92;
+      animation: pulse 2.8s ease-in-out infinite;
+      transform-origin: bottom;
+    }
+    .signal span:nth-child(2n) { animation-delay: -.6s; }
+    .signal span:nth-child(3n) { animation-delay: -1.1s; }
+    @keyframes pulse { 0%,100%{ transform:scaleY(.86); opacity:.68;} 50%{transform:scaleY(1.05); opacity:1;} }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .metric {
+      padding: 17px;
+      background: rgba(255,255,255,.025);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+    }
+    .metric b {
+      display: block;
+      font-size: 25px;
+      line-height: 1.15;
+      letter-spacing: -.035em;
+    }
+    .metric span { font-size: 12px; color: var(--muted); }
+
+    section { padding: 88px 0; }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 32px;
+      margin-bottom: 38px;
+      align-items: end;
+    }
+
+    .label {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-size: 11px;
+      font-weight: 820;
+      margin-bottom: 9px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(30px, 4vw, 46px);
+      line-height: 1.15;
+      letter-spacing: -.035em;
+    }
+
+    .section-desc {
+      color: var(--muted);
+      max-width: 650px;
+      margin: 0;
+      font-size: 15px;
+    }
+
+    .capability-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .capability {
+      padding: 23px 20px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.018);
+      border-radius: var(--radius);
+      min-height: 210px;
+      transition: .22s ease;
+    }
+    .capability:hover {
+      transform: translateY(-4px);
+      background: rgba(255,255,255,.03);
+      border-color: rgba(87,212,200,.27);
+    }
+    .capability .num {
+      font-size: 11px;
+      color: var(--accent);
+      font-weight: 800;
+      margin-bottom: 35px;
+    }
+    .capability h3 {
+      font-size: 18px;
+      margin: 0 0 9px;
+      letter-spacing: -.025em;
+    }
+    .capability p { margin:0; color:var(--muted); font-size:13px; }
+
+    .projects {
+      display: grid;
+      gap: 18px;
+    }
+
+    .project {
+      display: grid;
+      grid-template-columns: 235px 1fr;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      overflow: hidden;
+      background: rgba(255,255,255,.018);
+    }
+
+    .project-side {
+      padding: 26px;
+      background:
+        linear-gradient(180deg, rgba(87,212,200,.08), transparent 90%),
+        rgba(255,255,255,.015);
+      border-right: 1px solid var(--line);
+    }
+    .project-tag {
+      display:inline-flex;
+      border:1px solid rgba(87,212,200,.20);
+      color:var(--accent-2);
+      border-radius:999px;
+      padding:5px 9px;
+      font-size:10px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.07em;
+      margin-bottom:18px;
+    }
+    .project-side .result {
+      font-size: 28px;
+      font-weight: 810;
+      letter-spacing: -.04em;
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+    .project-side .result-note { font-size: 12px; color: var(--muted); }
+
+    .project-main { padding: 28px 30px; }
+    .project-main h3 { margin:0 0 9px; font-size:22px; letter-spacing:-.025em; }
+    .project-main > p { margin:0 0 22px; color:#b2c0c8; font-size:14px; }
+
+    .project-flow {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .flow-box {
+      padding: 14px 15px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.025);
+      border: 1px solid rgba(255,255,255,.055);
+    }
+    .flow-box b {
+      display:block;
+      color:#dce8ed;
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.06em;
+      margin-bottom:5px;
+    }
+    .flow-box span { color:var(--muted); font-size:12px; line-height:1.55; }
+
+    .role-fit {
+      margin-top: 18px;
+      padding-top: 15px;
+      border-top: 1px solid var(--line);
+      color: #c2d0d7;
+      font-size: 12px;
+    }
+    .role-fit strong { color: var(--warm); }
+
+    .timeline {
+      position: relative;
+      display: grid;
+      gap: 16px;
+    }
+    .timeline::before {
+      content:"";
+      position:absolute;
+      left: 18px;
+      top: 12px;
+      bottom: 12px;
+      width: 1px;
+      background: var(--line);
+    }
+    .timeline-item {
+      position: relative;
+      padding-left: 55px;
+    }
+    .timeline-item::before {
+      content:"";
+      position:absolute;
+      left:12px;
+      top:24px;
+      width:13px;
+      height:13px;
+      border-radius:50%;
+      background:var(--bg);
+      border:3px solid var(--accent);
+      box-shadow:0 0 0 6px rgba(87,212,200,.06);
+    }
+    .timeline-card {
+      padding: 21px 23px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255,255,255,.018);
+    }
+    .timeline-card .when {
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing:.06em;
+      margin-bottom:5px;
+    }
+    .timeline-card h3 { margin:0 0 4px; font-size:17px; }
+    .timeline-card p { margin:0; color:var(--muted); font-size:13px; }
+
+    .skills-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .skills-card {
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:24px;
+      background:rgba(255,255,255,.018);
+    }
+    .skills-card h3 { margin:0 0 15px; font-size:16px; }
+    .chips { display:flex; flex-wrap:wrap; gap:8px; }
+    .chips span {
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.022);
+      color:#bfcdd4;
+      padding:7px 10px;
+      border-radius:999px;
+      font-size:11px;
+    }
+
+    .thesis {
+      margin-top: 18px;
+      padding: 28px;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background: linear-gradient(135deg, rgba(87,212,200,.05), rgba(255,255,255,.015));
+    }
+    .thesis .small { color:var(--accent); font-size:11px; font-weight:800; letter-spacing:.08em; }
+    .thesis h3 { margin:8px 0 10px; font-size:19px; }
+    .thesis p { margin:0; color:var(--muted); font-size:13px; max-width:900px; }
+
+    .quote-panel {
+      padding: 50px;
+      border: 1px solid rgba(87,212,200,.18);
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at 100% 0%, rgba(87,212,200,.09), transparent 34%),
+        rgba(255,255,255,.018);
+    }
+    .quote-panel p {
+      margin:0;
+      max-width:880px;
+      font-size: clamp(24px, 3.3vw, 38px);
+      line-height:1.38;
+      letter-spacing:-.035em;
+      font-weight:720;
+    }
+    .quote-panel p span { color: var(--accent-2); }
+
+    .fit-grid {
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:13px;
+      margin-top:28px;
+    }
+    .fit-item {
+      padding:18px;
+      border-top:1px solid rgba(87,212,200,.26);
+    }
+    .fit-item b { display:block; font-size:13px; margin-bottom:6px; }
+    .fit-item span { color:var(--muted); font-size:12px; }
+
+    footer {
+      padding: 36px 0 52px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .footer-row {
+      display:flex; align-items:center; justify-content:space-between; gap:20px;
+    }
+    .footer-row b { color:#d9e5ea; }
+
+    .reveal {
+      opacity:0;
+      transform:translateY(16px);
+      transition:opacity .65s ease, transform .65s ease;
+    }
+    .reveal.show { opacity:1; transform:none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { scroll-behavior: auto !important; }
+      .signal span, .reveal { animation:none !important; transition:none !important; }
+      .reveal { opacity:1; transform:none; }
+    }
+
+    @media (max-width: 920px) {
+      .navlinks { display:none; }
+      .hero { min-height:auto; }
+      .hero-grid, .section-head, .skills-wrap { grid-template-columns:1fr; }
+      .hero-panel { max-width:640px; }
+      .capability-grid { grid-template-columns:1fr 1fr; }
+      .project { grid-template-columns:1fr; }
+      .project-side { border-right:0; border-bottom:1px solid var(--line); }
+      .project-flow { grid-template-columns:1fr; }
+      .fit-grid { grid-template-columns:1fr; }
+    }
+
+    @media (max-width: 580px) {
+      .shell { width:min(calc(100% - 28px), var(--max)); }
+      .hero { padding-top:58px; }
+      .hero-grid { gap:34px; }
+      h1 { font-size:42px; }
+      .hero-copy { font-size:16px; }
+      section { padding:68px 0; }
+      .capability-grid { grid-template-columns:1fr; }
+      .metric-grid { grid-template-columns:1fr 1fr; }
+      .project-main, .project-side { padding:22px; }
+      .quote-panel { padding:28px 22px; }
+      .footer-row { align-items:flex-start; flex-direction:column; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page-grid"></div>
+
+  <header class="topbar">
+    <div class="shell nav">
+      <a class="brand" href="#top" aria-label="홈으로">
+        <span class="chipmark" aria-hidden="true"></span>
+        <span>JIWOO SHIM · ENGINEERING PORTFOLIO</span>
+      </a>
+      <nav class="navlinks" aria-label="주요 메뉴">
+        <a href="#strength">Strength</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#fit">Role Fit</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div>
+          <div class="eyebrow"><span class="dot"></span> Semiconductor Equipment · Process Engineering</div>
+          <h1>
+            문제를 끝까지 추적해<br />
+            <span style="color:var(--accent-2)">공정의 조건</span>으로 바꾸는 엔지니어
+            <span class="sub">Equipment troubleshooting · Process optimization · Data-driven engineering</span>
+          </h1>
+
+          <p class="hero-copy">
+            전자회절 장비를 직접 운영하며 <strong>진공·고전압·레이저·검출기</strong>가 얽힌 문제를
+            단계적으로 분리해 해결했고, 반도체 패키징 실습에서는 <strong>DOE와 통계 분석</strong>으로
+            공정 변수와 품질의 관계를 검증했습니다. 현상을 관찰하는 데서 멈추지 않고,
+            <strong>재현 가능한 장비 조건과 공정 판단 기준</strong>으로 연결하는 일을 지향합니다.
+          </p>
+
+          <div class="hero-cta">
+            <a class="btn primary" href="#projects">핵심 프로젝트 보기 →</a>
+            <a class="btn ghost" href="#fit">직무 적합성 보기</a>
+          </div>
+        </div>
+
+        <aside class="hero-panel reveal" aria-label="핵심 성과">
+          <div class="panel-kicker">Engineering Impact</div>
+          <div class="signal" aria-hidden="true">
+            <span style="height:26%"></span><span style="height:38%"></span><span style="height:29%"></span>
+            <span style="height:52%"></span><span style="height:47%"></span><span style="height:65%"></span>
+            <span style="height:59%"></span><span style="height:81%"></span><span style="height:71%"></span>
+            <span style="height:92%"></span><span style="height:84%"></span><span style="height:100%"></span>
+          </div>
+          <div class="metric-grid">
+            <div class="metric">
+              <b>≈ 4×</b>
+              <span>전자 신호 개선</span>
+            </div>
+            <div class="metric">
+              <b>2–3h → 30m</b>
+              <span>장비 정렬 시간 단축</span>
+            </div>
+            <div class="metric">
+              <b>120h</b>
+              <span>반도체 패키징 심화 교육</span>
+            </div>
+            <div class="metric">
+              <b>DOE</b>
+              <span>Wire Bonding 공정 최적화</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="strength">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div>
+            <div class="label">01 · Core Strength</div>
+            <h2>연구 경험을<br />엔지니어링 역량으로</h2>
+          </div>
+          <p class="section-desc">
+            장비 구조를 이해하고, 변수를 통제하며, 데이터를 근거로 원인을 좁히는 방식은
+            반도체 장비·공정 엔지니어의 문제 해결 과정과 맞닿아 있습니다.
+          </p>
+        </div>
+
+        <div class="capability-grid">
+          <article class="capability reveal">
+            <div class="num">01 / TROUBLESHOOTING</div>
+            <h3>복합 장비 문제 분해</h3>
+            <p>진공, 고전압, 광학 경로, 검출기 등 여러 원인이 얽힌 현상을 단계별 체크포인트로 분해해 원인을 좁힙니다.</p>
+          </article>
+          <article class="capability reveal">
+            <div class="num">02 / PROCESS</div>
+            <h3>공정 변수 최적화</h3>
+            <p>Wire Bonding의 Time·Power·Force와 품질 지표의 관계를 DOE·ANOVA·반응표면 분석으로 검증했습니다.</p>
+          </article>
+          <article class="capability reveal">
+            <div class="num">03 / DATA</div>
+            <h3>데이터 기반 판단</h3>
+            <p>Python·MATLAB·Minitab을 활용해 원시 데이터를 가공하고, 신호 분리·회귀·통계 검증으로 판단 근거를 만듭니다.</p>
+          </article>
+          <article class="capability reveal">
+            <div class="num">04 / COLLABORATION</div>
+            <h3>실행 가능한 소통</h3>
+            <p>현미경 이미지, 로그, 발생 조건을 상대 전문성에 맞춰 정리해 전달하고 개선안을 다시 실험으로 검증합니다.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div>
+            <div class="label">02 · Selected Projects</div>
+            <h2>문제를 발견하고<br />조건을 바꾼 경험</h2>
+          </div>
+          <p class="section-desc">
+            각 프로젝트를 장비·공정 직무에서 실제로 보는 방식인
+            <strong style="color:#dce8ed">Problem → Action → Verification</strong> 구조로 정리했습니다.
+          </p>
+        </div>
+
+        <div class="projects">
+          <article class="project reveal">
+            <div class="project-side">
+              <div class="project-tag">Equipment Troubleshooting</div>
+              <div class="result">≈ 400%</div>
+              <div class="result-note">전자 신호 개선 및 이상 신호 제거</div>
+            </div>
+            <div class="project-main">
+              <h3>전자회절 장비 신호 저하 원인 추적 및 정렬 체계 개선</h3>
+              <p>
+                자체 구축 전자회절 장비에서 전자 신호가 충분히 검출되지 않고 비정상 패턴이 반복되는 문제를
+                단순 튜닝이 아니라 장비 경로 전체의 문제로 정의했습니다.
+              </p>
+              <div class="project-flow">
+                <div class="flow-box"><b>Problem</b><span>레이저·전자빔 정렬 상태를 육안 중심으로 판단해 기준점이 흔들리고 재현성이 낮음</span></div>
+                <div class="flow-box"><b>Action</b><span>UV camera 도입, 광학 경로 재구성, 정렬 기준 고정 및 단계별 체크 절차 구축</span></div>
+                <div class="flow-box"><b>Verify</b><span>전자 count 약 4배 개선, 비정상 신호 제거, 정렬 시간 2–3시간에서 약 30분으로 단축</span></div>
+              </div>
+              <div class="role-fit"><strong>직무 연결:</strong> 장비 성능 저하 원인 분석 · Set-up/Calibration · 재현성 확보 · Troubleshooting 표준화</div>
+            </div>
+          </article>
+
+          <article class="project reveal">
+            <div class="project-side">
+              <div class="project-tag">Automation · AI-Assisted</div>
+              <div class="result">SDK + GUI</div>
+              <div class="result-note">검출기–모터 스테이지 연동 자동화</div>
+            </div>
+            <div class="project-main">
+              <h3>대체 검출기 도입을 위한 실험 제어 프로그램 구축</h3>
+              <p>
+                기존 검출기 사용이 어려워 대여 장비로 교체해야 했지만, 기존처럼 촬영 조건과 스테이지 이동을
+                연동하는 전용 프로그램이 없는 상황에서 직접 제어 환경을 만들었습니다.
+              </p>
+              <div class="project-flow">
+                <div class="flow-box"><b>Problem</b><span>Exposure·Trigger·ROI 설정과 Delay stage 이동을 수동 처리해 장시간 측정에 부적합</span></div>
+                <div class="flow-box"><b>Action</b><span>검출기 SDK를 활용해 GUI 제작, 로그를 저장하고 AI 도구로 오류 패턴을 검토하며 코드 반복 개선</span></div>
+                <div class="flow-box"><b>Verify</b><span>Gain 미반영·장시간 Crash 원인을 단계적으로 수정하고 자동 측정 흐름을 안정화</span></div>
+              </div>
+              <div class="role-fit"><strong>직무 연결:</strong> 신규 장비/모듈 도입 · Interface 이해 · 로그 기반 Debugging · 반복 업무 자동화</div>
+            </div>
+          </article>
+
+          <article class="project reveal">
+            <div class="project-side">
+              <div class="project-tag">Process Optimization</div>
+              <div class="result">DOE</div>
+              <div class="result-note">Wire Bonding 품질 인자 분석</div>
+            </div>
+            <div class="project-main">
+              <h3>Wire Bonding 공정변수 DOE 및 접합 품질 분석</h3>
+              <p>
+                패키징 심화 교육에서 Wire Bonding 장비를 직접 운용하고,
+                공정변수 변화가 Ball Shear·Wire Pull 결과에 미치는 영향을 통계적으로 분석했습니다.
+              </p>
+              <div class="project-flow">
+                <div class="flow-box"><b>Design</b><span>US Time · US Power · Force를 인자로 실험 조건을 설계하고 반복 측정 데이터 확보</span></div>
+                <div class="flow-box"><b>Analyze</b><span>Minitab으로 ANOVA, 교호작용, Pareto, 반응표면, 공정능력 분석 수행</span></div>
+                <div class="flow-box"><b>Learn</b><span>측정 지표와 직접 연결되는 공정변수를 선정해야 하며, 평균값뿐 아니라 산포와 파단 모드까지 함께 해석해야 함을 확인</span></div>
+              </div>
+              <div class="role-fit"><strong>직무 연결:</strong> Process Window · DOE · 품질 지표 해석 · 주요 인자 선정 · 조건 최적화</div>
+            </div>
+          </article>
+
+          <article class="project reveal">
+            <div class="project-side">
+              <div class="project-tag">Cross-functional Collaboration</div>
+              <div class="result">MPI</div>
+              <div class="result-note">독일 연구소 다분야 협업</div>
+            </div>
+            <div class="project-main">
+              <h3>서로 다른 전문 분야 사이의 문제 전달 방식 개선</h3>
+              <p>
+                독일 막스플랑크 연구소에서 미세유체칩·bead·광학계를 각각 담당하는 연구자들과 함께
+                새 실험 조건을 최적화하며 파트 간 이슈를 연결하는 역할을 수행했습니다.
+              </p>
+              <div class="project-flow">
+                <div class="flow-box"><b>Issue</b><span>구두 설명만으로는 각 담당자가 현장을 다시 확인해야 해 개선 방향 결정이 늦어짐</span></div>
+                <div class="flow-box"><b>Action</b><span>현미경 이미지에 발생 위치·조건·측정 영향을 정리하고 담당 분야별로 필요한 정보만 재구성</span></div>
+                <div class="flow-box"><b>Result</b><span>반복 확인을 줄이고 각 담당자가 바로 개선안을 논의할 수 있도록 피드백 루프 단축</span></div>
+              </div>
+              <div class="role-fit"><strong>직무 연결:</strong> 장비사·공정·고객 간 커뮤니케이션 · Issue 정리 · Cross-functional 협업</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div>
+            <div class="label">03 · Experience & Education</div>
+            <h2>장비 운영에서<br />반도체 공정으로</h2>
+          </div>
+          <p class="section-desc">
+            기초과학 연구에서 축적한 장비·분석 역량을 반도체 제조 현장의 문제 해결 방식으로 확장해 왔습니다.
+          </p>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item reveal">
+            <div class="timeline-card">
+              <div class="when">2026 · SEMICONDUCTOR PACKAGING TRAINING</div>
+              <h3>반도체 패키징 전문가 과정 · 120시간</h3>
+              <p>Dicing · Wire Bonding · Molding 장비 실습 / Wire Pull · Ball Shear Test / DOE · ANOVA · 공정능력 분석</p>
+            </div>
+          </div>
+          <div class="timeline-item reveal">
+            <div class="timeline-card">
+              <div class="when">MASTER'S RESEARCH · KAIST</div>
+              <h3>초고속 X-ray / Electron Diffraction 기반 실험 및 데이터 분석</h3>
+              <p>자체 구축 keV-UED 운영, 실험 셋업 최적화, 검출기 교체 대응, Python·MATLAB 기반 신호 분석 및 동역학 모델링</p>
+            </div>
+          </div>
+          <div class="timeline-item reveal">
+            <div class="timeline-card">
+              <div class="when">RESEARCH INTERNSHIP · GERMANY</div>
+              <h3>Max Planck Institute · 실험 조건 최적화 및 협업</h3>
+              <p>미세유체칩·bead·광학계 담당자 사이에서 문제 조건을 구조화해 전달하고 수정 조건을 반복 검증</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="thesis reveal">
+          <div class="small">MASTER'S THESIS · ANALYTICAL FOUNDATION</div>
+          <h3>펨토초 X선 액체 산란으로 규명한 액체 메탄올의 여기 파장 의존적 구조 및 배향 응답</h3>
+          <p>
+            복잡한 시간분해 산란 데이터를 등방성·이방성 성분으로 분리하고 SVD, 전역 동역학 피팅,
+            DADS 분석을 적용해 여러 시간 척도의 구조 변화를 구분했습니다.
+            이 경험을 통해 <strong style="color:#dce8ed">복잡한 신호에서 원인을 분리하고 가설을 데이터로 검증하는 분석 방식</strong>을 익혔습니다.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div>
+            <div class="label">04 · Technical Skills</div>
+            <h2>장비 · 공정 · 데이터</h2>
+          </div>
+          <p class="section-desc">
+            특정 툴 이름보다 실제 문제를 풀 때 어떻게 연결해 사용하는지를 중심으로 정리했습니다.
+          </p>
+        </div>
+
+        <div class="skills-wrap">
+          <div class="skills-card reveal">
+            <h3>Equipment / Experiment</h3>
+            <div class="chips">
+              <span>Vacuum System</span><span>High Voltage</span><span>Laser Alignment</span>
+              <span>Electron Diffraction</span><span>X-ray Scattering</span><span>Detector Integration</span>
+              <span>Calibration</span><span>Troubleshooting</span>
+            </div>
+          </div>
+          <div class="skills-card reveal">
+            <h3>Semiconductor Packaging</h3>
+            <div class="chips">
+              <span>Dicing</span><span>Wire Bonding</span><span>Molding</span>
+              <span>Ball Shear Test</span><span>Wire Pull Test</span><span>DOE</span>
+              <span>Process Capability</span><span>Root Cause Analysis</span>
+            </div>
+          </div>
+          <div class="skills-card reveal">
+            <h3>Data / Statistics</h3>
+            <div class="chips">
+              <span>Python</span><span>MATLAB</span><span>Minitab</span>
+              <span>ANOVA</span><span>Regression</span><span>Response Surface</span>
+              <span>SVD</span><span>Data Visualization</span>
+            </div>
+          </div>
+          <div class="skills-card reveal">
+            <h3>Engineering Work Style</h3>
+            <div class="chips">
+              <span>Hypothesis-driven Debugging</span><span>Documentation</span>
+              <span>Cross-functional Communication</span><span>Vendor Communication</span>
+              <span>Experiment Automation</span><span>AI-assisted Coding</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="fit">
+      <div class="shell">
+        <div class="quote-panel reveal">
+          <div class="label">05 · Why Equipment / Process Engineering</div>
+          <p>
+            현상을 설명하는 연구에서 한 걸음 더 나아가,
+            <span>“왜 이 결과가 나왔는지”를 장비와 공정 조건까지 내려가 해결하는 일</span>을 하고 싶습니다.
+          </p>
+
+          <div class="fit-grid">
+            <div class="fit-item">
+              <b>장비 엔지니어</b>
+              <span>복합 장비의 이상 현상을 분해하고, 로그·신호·물리적 구조를 함께 보며 원인을 추적합니다.</span>
+            </div>
+            <div class="fit-item">
+              <b>공정 엔지니어</b>
+              <span>변수와 품질 지표의 관계를 실험으로 검증하고, 재현 가능한 Process Window를 찾습니다.</span>
+            </div>
+            <div class="fit-item">
+              <b>R&D / 선행개발</b>
+              <span>새로운 장비·재료·조건을 빠르게 학습하고 가능성을 실험 데이터로 판단해 다음 개발 방향으로 연결합니다.</span>
+            </div>
+          </div>
+
+          <div class="hero-cta" style="margin-top:34px">
+            <a class="btn primary" href="#top">Back to top ↑</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-row">
+      <div><b>Jiwoo Shim</b> · Semiconductor Equipment & Process Engineering Portfolio</div>
+      <div>© <span id="year"></span> · Built as a single-file portfolio</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const reveal = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+          reveal.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+
+    document.querySelectorAll(".reveal").forEach((el) => reveal.observe(el));
+  </script>
+</body>
+</html>
