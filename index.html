@@ -54,6 +54,12 @@
       font-weight: 400;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
+
+      /* 한글 줄바꿈: 낱말(어절) 단위로만 끊는다.
+         이걸 안 주면 "체크포인트"가 "체 / 크포인트"처럼 쪼개진다.
+         영문에는 영향 없고, 컨테이너를 넘치는 긴 문자열만 예외로 끊는다. */
+      word-break: keep-all;
+      overflow-wrap: break-word;
     }
 
     a { color: inherit; text-decoration: none; }
@@ -167,8 +173,8 @@
 
     h1 {
       margin: 30px 0 28px;
-      font-size: clamp(46px, 6.4vw, 82px);
-      line-height: 1.02;
+      font-size: clamp(37px, 5.1vw, 66px);
+      line-height: 1.06;
       letter-spacing: -0.045em;
       font-weight: 700;
     }
@@ -177,11 +183,13 @@
       display: block;
       margin-top: 20px;
       font-size: .34em;
-      line-height: 1.4;
+      line-height: 1.45;
       color: var(--muted);
       letter-spacing: -0.02em;
       font-weight: 500;
     }
+    /* 구문 단위로만 줄바꿈 — 어구 중간에서 끊기지 않게 */
+    .nb { white-space: nowrap; }
 
     .hero-copy {
       max-width: 620px;
@@ -653,7 +661,7 @@
       body { font-size: 16px; }
       .shell { width: min(calc(100% - 32px), var(--max)); }
       .hero { padding: 72px 0 64px; }
-      h1 { font-size: 40px; }
+      h1 { font-size: 32px; }
       .hero-copy { font-size: 17px; }
       section { padding: 80px 0; }
       .capability-grid { grid-template-columns: 1fr; }
@@ -675,7 +683,7 @@
     <div class="shell nav">
       <a class="brand" href="#top" aria-label="홈으로">
         <span class="chipmark" aria-hidden="true"></span>
-        <span>JIWOO SHIM · ENGINEERING PORTFOLIO</span>
+        <span>JIWOO SHIM · PORTFOLIO</span>
       </a>
       <nav class="navlinks" aria-label="주요 메뉴">
         <a href="#strength">Strength</a>
@@ -693,16 +701,14 @@
         <div>
           <div class="eyebrow"><span class="dot"></span> Semiconductor Equipment · Process Engineering</div>
           <h1>
-            문제를 끝까지 추적해<br />
-            <span style="color:var(--accent)">공정의 조건</span>으로 바꾸는 엔지니어
-            <span class="sub">Equipment troubleshooting · Process optimization · Data-driven engineering</span>
+            생각에 머물지 않고,<br />
+            <span style="color:var(--accent)">먼저 움직이는</span> 엔지니어
+            <span class="sub"><span class="nb">Equipment troubleshooting</span> · <span class="nb">Process optimization</span><br /><span class="nb">Data-driven engineering</span></span>
           </h1>
 
           <p class="hero-copy">
-            전자회절 장비를 직접 운영하며 <strong>진공·고전압·레이저·검출기</strong>가 얽힌 문제를
-            단계적으로 분리해 해결했고, 반도체 패키징 실습에서는 <strong>DOE와 통계 분석</strong>으로
-            공정 변수와 품질의 관계를 검증했습니다. 현상을 관찰하는 데서 멈추지 않고,
-            <strong>재현 가능한 장비 조건과 공정 판단 기준</strong>으로 연결하는 일을 지향합니다.
+            문제가 생기거나 개선이 필요할 때, <strong>주어진 환경 안에서만</strong> 답을 찾지 않았습니다.<br />
+            필요한 전문가를 직접 찾아가고, 아이디어를 내며 <strong>장비를 개선</strong>했습니다.
           </p>
 
           <div class="hero-cta">
@@ -768,12 +774,12 @@
           <article class="capability reveal">
             <div class="num">03 / DATA</div>
             <h3>데이터 기반 판단</h3>
-            <p>Python·MATLAB·Minitab을 활용해 원시 데이터를 가공하고, 신호 분리·회귀·통계 검증으로 판단 근거를 만듭니다.</p>
+            <p>Python·MATLAB·Minitab을 활용해 raw data를 가공하고, 신호 분리·회귀·통계 검증으로 판단 근거를 만듭니다.</p>
           </article>
           <article class="capability reveal">
             <div class="num">04 / COLLABORATION</div>
             <h3>실행 가능한 소통</h3>
-            <p>현미경 이미지, 로그, 발생 조건을 상대 전문성에 맞춰 정리해 전달하고 개선안을 다시 실험으로 검증합니다.</p>
+            <p>현미경 이미지, 로그, 발생 조건을 정리해 상대가 필요한 형태로 전달하고, 개선안을 다시 실험으로 검증합니다.</p>
           </article>
         </div>
       </div>
@@ -828,10 +834,10 @@
               </p>
               <div class="project-flow">
                 <div class="flow-box"><b>Problem</b><span>Exposure·Trigger·ROI 설정과 Delay stage 이동을 수동 처리해 장시간 측정에 부적합</span></div>
-                <div class="flow-box"><b>Action</b><span>검출기 SDK를 활용해 GUI 제작, 로그를 저장하고 AI 도구로 오류 패턴을 검토하며 코드 반복 개선</span></div>
+                <div class="flow-box"><b>Action</b><span>검출기 SDK를 활용해 GUI 제작, 로그를 저장하고 AI 도구로 오류 패턴을 검토하며 코드 개선</span></div>
                 <div class="flow-box"><b>Verify</b><span>Gain 미반영·장시간 Crash 원인을 단계적으로 수정하고 자동 측정 흐름을 안정화</span></div>
               </div>
-              <div class="role-fit"><strong>직무 연결:</strong> 신규 장비/모듈 도입 · Interface 이해 · 로그 기반 Debugging · 반복 업무 자동화</div>
+              <div class="role-fit"><strong>직무 연결:</strong> 신규 장비/모듈 도입 · Interface 이해 · 로그 기반 Troubleshooting · 반복 업무 자동화</div>
             </div>
           </article>
 
@@ -859,8 +865,8 @@
           <article class="project reveal">
             <div class="project-side">
               <div class="project-tag">Cross-functional Collaboration</div>
-              <div class="result">MPI</div>
-              <div class="result-note">독일 연구소 다분야 협업</div>
+              <div class="result">MPL</div>
+              <div class="result-note">Max Planck Institute for the Science of Light · 다분야 협업</div>
             </div>
             <div class="project-main">
               <h3>서로 다른 전문 분야 사이의 문제 전달 방식 개선</h3>
@@ -910,8 +916,8 @@
           <div class="timeline-item reveal">
             <div class="timeline-card">
               <div class="when">RESEARCH INTERNSHIP · GERMANY</div>
-              <h3>Max Planck Institute · 실험 조건 최적화 및 협업</h3>
-              <p>미세유체칩·bead·광학계 담당자 사이에서 문제 조건을 구조화해 전달하고 수정 조건을 반복 검증</p>
+              <h3>Max Planck Institute for the Science of Light · 실험 조건 최적화 및 협업</h3>
+              <p>미세유체칩·bead·광학계 담당자 사이에서 문제 조건을 구조화해 전달하고 수정 조건을 검증</p>
             </div>
           </div>
         </div>
@@ -935,18 +941,18 @@
             <div class="label">04 · Technical Skills</div>
             <h2>장비 · 공정 · 데이터</h2>
           </div>
-          <p class="section-desc">
-            특정 툴 이름보다 실제 문제를 풀 때 어떻게 연결해 사용하는지를 중심으로 정리했습니다.
-          </p>
         </div>
 
         <div class="skills-wrap">
           <div class="skills-card reveal">
             <h3>Equipment / Experiment</h3>
             <div class="chips">
+              <span>Time-resolved X-ray Liquidography</span><span>Ultrafast Electron Diffraction</span>
+              <span>Time-resolved X-ray Absorption Spectroscopy</span>
+              <span>XFEL / Synchrotron Experiments</span>
               <span>Vacuum System</span><span>High Voltage</span><span>Laser Alignment</span>
-              <span>Electron Diffraction</span><span>X-ray Scattering</span><span>Detector Integration</span>
-              <span>Calibration</span><span>Troubleshooting</span>
+              <span>Calibration</span>
+              <span>UV-vis</span><span>TCSPC</span><span>pXRD</span>
             </div>
           </div>
           <div class="skills-card reveal">
@@ -954,21 +960,19 @@
             <div class="chips">
               <span>Dicing</span><span>Wire Bonding</span><span>Molding</span>
               <span>Ball Shear Test</span><span>Wire Pull Test</span><span>DOE</span>
-              <span>Process Capability</span><span>Root Cause Analysis</span>
             </div>
           </div>
           <div class="skills-card reveal">
             <h3>Data / Statistics</h3>
             <div class="chips">
               <span>Python</span><span>MATLAB</span><span>Minitab</span>
-              <span>ANOVA</span><span>Regression</span><span>Response Surface</span>
-              <span>SVD</span><span>Data Visualization</span>
+              <span>ANOVA</span><span>SVD (Singular Value Decomposition)</span>
             </div>
           </div>
           <div class="skills-card reveal">
             <h3>Engineering Work Style</h3>
             <div class="chips">
-              <span>Hypothesis-driven Debugging</span><span>Documentation</span>
+              <span>Hypothesis-driven Troubleshooting</span><span>Documentation</span>
               <span>Cross-functional Communication</span><span>Vendor Communication</span>
               <span>Experiment Automation</span><span>AI-assisted Coding</span>
             </div>
@@ -982,22 +986,21 @@
         <div class="quote-panel reveal">
           <div class="label">05 · Why Equipment / Process Engineering</div>
           <p>
-            현상을 설명하는 연구에서 한 걸음 더 나아가,
-            <span>“왜 이 결과가 나왔는지”를 장비와 공정 조건까지 내려가 해결하는 일</span>을 하고 싶습니다.
+            원인을 <span>장비와 공정</span> 차원까지 파고들어 해결하고 싶습니다.
           </p>
 
           <div class="fit-grid">
             <div class="fit-item">
               <b>장비 엔지니어</b>
-              <span>복합 장비의 이상 현상을 분해하고, 로그·신호·물리적 구조를 함께 보며 원인을 추적합니다.</span>
+              <span>복합 장비의 이상 현상을 분해해, 로그·신호·물리적 구조를 함께 보며 원인을 추적하고 싶습니다.</span>
             </div>
             <div class="fit-item">
               <b>공정 엔지니어</b>
-              <span>변수와 품질 지표의 관계를 실험으로 검증하고, 재현 가능한 Process Window를 찾습니다.</span>
+              <span>변수와 품질 지표의 관계를 실험으로 검증해, 재현 가능한 Process Window를 찾고 싶습니다.</span>
             </div>
             <div class="fit-item">
-              <b>R&D / 선행개발</b>
-              <span>새로운 장비·재료·조건을 빠르게 학습하고 가능성을 실험 데이터로 판단해 다음 개발 방향으로 연결합니다.</span>
+              <b>R&D</b>
+              <span>새로운 장비·재료·조건을 빠르게 학습해, 가능성을 실험 데이터로 판단하고 다음 개발 방향으로 연결하고 싶습니다.</span>
             </div>
           </div>
 
